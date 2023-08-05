@@ -211,37 +211,53 @@ Solution to 1.1.5
 % For peerreview papers, this IEEEtran command inserts a page break and
 % creates the second title. It will be ignored for other modes.
 %\IEEEpeerreviewmaketitle
+Question: 
+\newline
+
+The normal form of equation of AB is
+\begin{align}
+\vec{n}^{\top}(\vec{x} - \vec{A}) = 0
+\end{align}
+where
+\begin{align}
+\vec{n}^{\top}\vec{m} = \vec{n}^{\top}(\vec{B} - \vec{A})
+\end{align}
+\newline
+
+Find the normal form of the equation of AB. 
+\newline
+
 Given:
-\\\\
-$\vec{A} = \myvec{1\\-1\\}$
-, $\vec{B} = \myvec{-4\\6\\}$
-, $\vec{C} = \myvec{-3\\-5\\}$
-\\\\\\
+\begin{align}
+\vec{A} &= \myvec{1\\-1\\}\\
+\vec{B} &= \myvec{-4\\6\\}\\
+\vec{C} &= \myvec{-3\\-5\\}
+\end{align}
+\newline
+
+Solution:
+\newline
+
 for AB:
 \begin{align}
 	\vec{m} &= \vec{B}-\vec{A}\\
          &= \myvec{-4-1\\6+1\\}\\
          &= \myvec{-5\\7\\}
 \end{align}
-\\
-parametric form of equation of line AB:
+\newline
+
+we have to find $\vec{n}^{\top}$ such that,
 \begin{align}
-	\vec{x} &= \vec{A} + \vec{m}k\\
-         &= \myvec{1\\-1\\} + \myvec{-5\\7\\}k
+           &\implies \vec{n}^{\top}\vec{m} = 0
+\\         &\implies \vec{n}^{\top} = \myvec{7&5} 
 \end{align}
-\\
-we have to find $n^{\top}$ such that,
-\begin{align}
-           &\implies n^{\top}m = 0
-\\         &\implies n^{\top} = \myvec{7&5} 
-\end{align}
-\\
+\newline
+
 normal form of equation of line AB:
 \begin{align}
-       &\implies n^{\top}(\vec{x} - \vec{A}) = 0\\     
-       &\implies n^{\top}\vec{x} = n^{\top}\vec{A}\\     
-       &\implies\myvec{7&5}\myvec{x\\y\\} = 2\\
-       &\implies 7x+5y=2
+       &\implies \vec{n}^{\top}(\vec{x} - \vec{A}) = 0\\     
+       &\implies \vec{n}^{\top}\vec{x} = \vec{n}^{\top}\vec{A}\\     
+       &\implies\myvec{7&5}\vec{x} = 2
 \end{align}
 
 \end{document}
