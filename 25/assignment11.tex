@@ -1,0 +1,296 @@
+\let\negmedspace\undefined
+\let\negthickspace\undefined
+\def\inputGnumericTable{}  
+\documentclass[journal,12pt,onecolumn]{IEEEtran}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{txfonts}
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{gensymb}
+\usepackage[breaklinks=true]{hyperref}
+\usepackage{tkz-euclide} % loads  TikZ and tkz-base
+\usepackage{listings}
+\usepackage{gvv}
+\usepackage[latin1]{inputenc}                                 
+\usepackage{color}                                            
+\usepackage{array}                                            
+\usepackage{longtable}                                        
+\usepackage{calc}                                             
+\usepackage{multirow}                                         
+\usepackage{hhline}                                           
+\usepackage{ifthen}                                           
+\usepackage{lscape}  
+%
+%\usepackage{setspace}
+%\usepackage{gensymb}
+%\doublespacing
+%\singlespacing
+
+%\usepackage{graphicx}
+%\usepackage{amssymb}
+%\usepackage{relsize}
+%\usepackage[cmex10]{amsmath}
+%\usepackage{amsthm}
+%\interdisplaylinepenalty=2500
+%\savesymbol{iint}
+%\usepackage{txfonts}
+%\restoresymbol{TXF}{iint}
+%\usepackage{wasysym}
+%\usepackage{amsthm}
+%\usepackage{iithtlc}
+%\usepackage{mathrsfs}
+%\usepackage{txfonts}
+%\usepackage{stfloats}
+%\usepackage{bm}
+%\usepackage{cite}
+%\usepackage{cases}
+%\usepackage{subfig}
+%\usepackage{xtab}
+%\usepackage{longtable}
+%\usepackage{multirow}
+%\usepackage{algorithm}
+%\usepackage{algpseudocode}
+%\usepackage{enumitem}
+%\usepackage{mathtools}
+%\usepackage{tikz}
+%\usepackage{circuitikz}
+%\usepackage{verbatim}
+%\usepackage{tfrupee}
+%\usepackage{stmaryrd}
+%\usetkzobj{all}
+%    \usepackage{color}                                            %%
+%    \usepackage{array}                                            %%
+%    \usepackage{longtable}                                        %%
+%    \usepackage{calc}                                             %%
+%    \usepackage{multirow}                                         %%
+%    \usepackage{hhline}                                           %%
+%    \usepackage{ifthen}                                           %%
+  %optionally (for landscape tables embedded in another document): %%
+%    \usepackage{lscape}     
+%\usepackage{multicol}
+%\usepackage{chngcntr}
+%\usepackage{enumerate}
+
+%\usepackage{wasysym}
+%\documentclass[conference]{IEEEtran}
+%\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{problem}{Problem}
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}{Example}[section]
+\newtheorem{definition}[problem]{Definition}
+%\newtheorem{thm}{Theorem}[section] 
+%\newtheorem{defn}[thm]{Definition}
+%\newtheorem{algorithm}{Algorithm}[section]
+%\newtheorem{cor}{Corollary}
+\newcommand{\BEQA}{\begin{eqnarray}}
+\newcommand{\EEQA}{\end{eqnarray}}
+\newcommand{\define}{\stackrel{\triangle}{=}}
+\theoremstyle{remark}
+\newtheorem{rem}{Remark}
+
+%\bibliographystyle{ieeetr}
+\begin{document}
+%
+
+\bibliographystyle{IEEEtran}
+
+
+\vspace{3cm}
+
+\title{
+%	\logo{
+Assignment
+%	}
+}
+\author{ Aryan Jain - EE22BTECH11011$^{*}$% <-this % stops a space	
+}	
+%\title{
+%	\logo{Matrix Analysis through Octave}{\begin{center}\includegraphics[scale=.24]{tlc}\end{center}}{}{HAMDSP}
+%}
+
+
+% paper title
+% can use linebreaks \\ within to get better formatting as desired
+%\title{Matrix Analysis through Octave}
+%
+%
+% author names and IEEE memberships
+% note positions of commas and nonbreaking spaces ( ~ ) LaTeX will not break
+% a structure at a ~ so this keeps an author's name from being broken across
+% two lines.
+% use \thanks{} to gain access to the first footnote area
+% a separate \thanks must be used for each paragraph as LaTeX2e's \thanks
+% was not built to handle multiple paragraphs
+%
+
+%\author{<-this % stops a space
+%\thanks{}}
+%}
+% note the % following the last \IEEEmembership and also \thanks - 
+% these prevent an unwanted space from occurring between the last author name
+% and the end of the author line. i.e., if you had this:
+% 
+% \author{....lastname \thanks{...} \thanks{...} }
+%                     ^------------^------------^----Do not want these spaces!
+%
+% a space would be appended to the last name and could cause every name on that
+% line to be shifted left slightly. This is one of those "LaTeX things". For
+% instance, "\textbf{A} \textbf{B}" will typeset as "A B" not "AB". To get
+% "AB" then you have to do: "\textbf{A}\textbf{B}"
+% \thanks is no different in this regard, so shield the last } of each \thanks
+% that ends a line with a % and do not let a space in before the next \thanks.
+% Spaces after \IEEEmembership other than the last one are OK (and needed) as
+% you are supposed to have spaces between the names. For what it is worth,
+% this is a minor point as most people would not even notice if the said evil
+% space somehow managed to creep in.
+
+
+
+% The paper headers
+%\markboth{Journal of \LaTeX\ Class Files,~Vol.~6, No.~1, January~2007}%
+%{Shell \MakeLowercase{\textit{et al.}}: Bare Demo of IEEEtran.cls for Journals}
+% The only time the second header will appear is for the odd numbered pages
+% after the title page when using the twoside option.
+% 
+% *** Note that you probably will NOT want to include the author's ***
+% *** name in the headers of peer review papers.                   ***
+% You can use \ifCLASSOPTIONpeerreview for conditional compilation here if
+% you desire.
+
+
+
+
+% If you want to put a publisher's ID mark on the page you can do it like
+% this:
+%\IEEEpubid{0000--0000/00\$00.00~\copyright~2007 IEEE}
+% Remember, if you use this you must call \IEEEpubidadjcol in the second
+% column for its text to clear the IEEEpubid mark.
+
+
+
+% make the title area
+\maketitle
+
+
+
+%\tableofcontents
+
+\bigskip
+
+\renewcommand{\thefigure}{\theenumi}
+\renewcommand{\thetable}{\theenumi}
+%\renewcommand{\theequation}{\theenumi}
+
+%\begin{abstract}
+%%\boldmath
+%In this letter, an algorithm for evaluating the exact analytical bit error rate  (BER)  for the piecewise linear (PL) combiner for  multiple relays is presented. Previous results were available only for upto three relays. The algorithm is unique in the sense that  the actual mathematical expressions, that are prohibitively large, need not be explicitly obtained. The diversity gain due to multiple relays is shown through plots of the analytical BER, well supported by simulations. 
+%
+%\end{abstract}
+% IEEEtran.cls defaults to using nonbold math in the Abstract.
+% This preserves the distinction between vectors and scalars. However,
+% if the journal you are submitting to favors bold math in the abstract,
+% then you can use LaTeX's standard command \boldmath at the very start
+% of the abstract to achieve this. Many IEEE journals frown on math
+% in the abstract anyway.
+
+% Note that keywords are not normally used for peerreview papers.
+%\begin{IEEEkeywords}
+%Cooperative diversity, decode and forward, piecewise linear
+%\end{IEEEkeywords}
+
+
+
+% For peer review papers, you can put extra information on the cover
+% page as needed:
+% \ifCLASSOPTIONpeerreview
+% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
+% \fi
+%
+% For peerreview papers, this IEEEtran command inserts a page break and
+% creates the second title. It will be ignored for other modes.
+%\IEEEpeerreviewmaketitle
+\textbf{Question}:
+Suppose that $\vec{X_1}, \vec{X_2},\ldots, \vec{X_n}, \vec{Y_1}, \vec{Y_2},\ldots, \vec{Y_n}$ are independent and identically distributed random vectors each having $N_p\brak{\vec{\mu},\Sigma}$ distributions, where $\Sigma$ is non-singular, $p>1$ and $n>1$. If $\overline{\vec{X}} = \frac{1}{n}\sum_{i=1}^{n}\vec{X_i}$ and $\overline{\vec{Y}} = \frac{1}{n}\sum_{i=1}^{n}\vec{Y_i}$, then which one of the following statements is true?
+\begin{enumerate}[label=(\alph*)]
+\item There exists $c>0$ such that $c{\brak{\overline{\vec{X}}-\vec{\mu}}}^T{\Sigma}^{-1}\brak{\overline{\vec{X}}-\vec{\mu}}$ has ${\chi}^2$-distribution with $p$ degrees of freedom.
+\item There exists $c>0$ such that $c{\brak{\overline{\vec{X}}-\overline{\vec{Y}}}^T}{\Sigma}^{-1}\brak{\overline{\vec{X}}-\overline{\vec{Y}}}$ has ${\chi}^2$-distribution with $\brak{p-1}$ degrees of freedom.
+\item There exists $c>0$ such that $c\sum_{i=1}^n{\brak{\vec{X_i}-\overline{\vec{X}}}}^T{\Sigma}^{-1}\brak{\vec{X_i}-\overline{\vec{X}}}$ has ${\chi}^2$-distribution with $p$ degrees of freedom.
+\item There exists $c>0$ such that $c\sum_{i=1}^n{\brak{\vec{X_i}-\vec{Y_i}-\overline{\vec{X}}+\overline{\vec{Y}}}}^T{\Sigma}^{-1}\brak{\vec{X_i}-\vec{Y_i}-\overline{\vec{X}}+\overline{\vec{Y}}}$ has ${\chi}^2$-distribution with $p$ degrees of freedom.   \hfill{GATE ST Paper 2023} 
+\end{enumerate}    
+\solution
+\newline
+We are given that,
+\begin{align}
+\vec{X_1}, \vec{X_2},\ldots, \vec{X_n}, \vec{Y_1}, \vec{Y_2},\ldots, \vec{Y_n} \sim N_p\brak{\vec{\mu},\Sigma}
+\end{align}
+Also,
+\begin{align}
+\overline{\vec{X}} &= \frac{1}{n}\sum_{i=1}^{n}\vec{X_i} \\
+\overline{\vec{Y}} &= \frac{1}{n}\sum_{i=1}^{n}\vec{Y_i} 
+\end{align}
+The mean of $\overline{\vec{X}}$ is given by: 
+\begin{align}
+{\mu}_{\overline{\vec{X}}} &= E\brak{\overline{\vec{X}}} \\
+                                    &= \frac{1}{n}\sum_{i=1}^{n}E\brak{\vec{X_i}} \\
+                                    &= \mu  \label{eq:23/25/1}
+\end{align}
+Similarly,
+\begin{align}
+{\mu}_{\overline{\vec{Y}}} &= \mu
+\end{align}
+The covariance of $\overline{\vec{X}}$ is given by: 
+\begin{align}
+\Sigma_{\overline{\vec{X}}} &= E\sbrak{\brak{\overline{\vec{X}}-\mu}{\brak{\overline{\vec{X}}-\mu}}^T} \\
+                            &= E\sbrak{\brak{\frac{1}{n}\sum_{i=1}^{n}\vec{X_i}-\mu}{\brak{\frac{1}{n}\sum_{i=1}^{n}\vec{X_i}-\mu}}^T} \\
+                            &= \frac{1}{n^2}E\sbrak{\sum_{i=1}^{n}\brak{\vec{X_i}-{\mu}_i}\sum_{j=1}^{n}\brak{\vec{X_j}-{\mu}_j}} \\
+                            &= \frac{1}{n^2}\sum_{i=1}^{n}\sum_{j=1}^{n}E\sbrak{\brak{\vec{X_i}-\mu}\brak{\vec{X_j}-\mu}} \\
+                            &= \Sigma
+\end{align}
+Similarly,
+\begin{align}
+\Sigma_{\overline{\vec{Y}}} &= \Sigma 
+\end{align}
+To check option (A): \\
+let us say,
+\begin{align}
+\vec{A} &= {\brak{\overline{\vec{X}}-\vec{\mu}}}^T{\Sigma}^{-1}\brak{\overline{\vec{X}}-\vec{\mu}} \\
+\end{align}
+And,
+\begin{align}
+{\Sigma}^{-1} &= {\vec{F}}^T\vec{F} \label{eq:23/25/3} \\
+\overline{\vec{y}} &= \vec{F}\brak{\overline{\vec{X}}-\mu} \\
+\implies \vec{A} &= {\overline{\vec{y}}}^T\overline{\vec{y}} \\
+                 &= {\norm{\overline{\vec{y}}}}^2  \label{eq:23/25/2}
+\end{align}
+Equation \eqref{eq:23/25/2} shows that $\vec{A}$ can have ${\chi}^2$-distribution. \\
+To confirm that we will find the mean and covariance-matrix of $\overline{\vec{y}}$.
+\begin{align}
+{\mu}_{\overline{\vec{y}}} &= E\brak{\overline{\vec{y}}} \\
+                           &= E\brak{\vec{F}\brak{\overline{\vec{X}}-\mu}} \\
+                           &= \vec{F}\sbrak{E\brak{\overline{\vec{X}}}-E\brak{\mu}} \\
+                           &= \vec{F}\sbrak{\mu-\mu} \quad from \eqref{eq:23/25/1} \\
+                           &= 0 
+\end{align}
+And,
+\begin{align}
+{\Sigma}_{\overline{\vec{y}}} &= E\sbrak{\brak{\overline{\vec{y}}-{\mu}_{\overline{\vec{y}}}}{\brak{\overline{\vec{y}}-{\mu}_{\overline{\vec{y}}}}}^T} \\
+                              &= E\sbrak{\brak{\vec{F}\brak{\overline{\vec{X}}-\mu}}{\brak{\vec{F}\brak{\overline{\vec{X}}-\mu}}}^T} \\
+                              &= E\sbrak{\vec{F}\brak{\overline{\vec{X}}-\mu}{\brak{\overline{\vec{X}}-\mu}}^T{\vec{F}}^T} \\
+                              &= \vec{F}\sbrak{E\sbrak{\brak{\overline{\vec{X}}-\mu}{\brak{\overline{\vec{X}}-\mu}}^T}}{\vec{F}}^T \\
+                              &= \vec{F} \Sigma {\vec{F}}^T \\
+                              &= \vec{I }\quad from \eqref{eq:23/25/3} 
+\end{align}
+Hence $\vec{A}$ has ${\chi}^2$-distribution. \\
+So option (A) is correct.
+\end{document}
