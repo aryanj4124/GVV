@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Audio Player</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            text-align: center;
+        }
+
+        h1 {
+            color: #1DB954;
+        }
+
+        #audio {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+         #player-controls 
+         {
+            margin-top: 20px;
+            color: #1ED760;
+        }
+
+        button {
+            background-color: #1DB954;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1ED760;
+        }
+         #now-playing {
+            font-weight: bold;
+            margin: 10px 0;
+            color: white;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 5px 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #1DB954;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Audio Player</h1>
+    <audio id="audio" controls>
+        <source id="audio-source" src="" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <div id="player-controls">
+        <button id="shuffle-songs">Shuffle</button>
+        <button id="previous-song">Previous Song</button>
+        <button id="next-song">Next Song</button>
+        <button id="play-original-order">Play Original Order</button>
+    </div>
+    <p id="now-playing">Now Playing: </p>
+
+    <ul id="playlist">
+        <li><a href="/songs/song1.mp3">song1</a></li>
+        <li><a href="/songs/song2.mp3">song2</a></li>
+        <li><a href="/songs/song3.mp3">song3</a></li>
+        <li><a href="/songs/song4.mp3">song4</a></li>
+        <li><a href="/songs/song5.mp3">song5</a></li>
+        <li><a href="/songs/song6.mp3">song6</a></li>
+        <li><a href="/songs/song7.mp3">song7</a></li>
+        <li><a href="/songs/song8.mp3">song8</a></li>
+        <li><a href="/songs/song9.mp3">song9</a></li>
+        <li><a href="/songs/song10.mp3">song10</a></li>
+        <li><a href="/songs/song11.mp3">song11</a></li>
+        <li><a href="/songs/song12.mp3">song12</a></li>
+        <li><a href="/songs/song13.mp3">song13</a></li>
+        <li><a href="/songs/song14.mp3">song14</a></li>
+        <li><a href="/songs/song15.mp3">song15</a></li>
+    </ul>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const audio = document.getElementById("audio");
+            const audioSource = document.getElementById("audio-source");
+            const playlist = document.getElementById("playlist");
+            const nextButton = document.getElementById("next-song");
+            const previousButton = document.getElementById("previous-song");
+            const shuffleButton = document.getElementById("shuffle-songs");
+            const nowPlayingText = document.getElementById("now-playing");
+            const playOriginalOrderButton = document.getElementById("play-original-order");
+
+            let currentSongIndex = 0;
+            let isShuffle = false;
+            let shuffledPlaylist = [];
+
+            function shufflePlaylist() {
+                shuffledPlaylist = [...Array.from(playlist.getElementsByTagName("a"))];
+                for (let i = shuffledPlaylist.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [shuffledPlaylist[i], shuffledPlaylist[j]] = [shuffledPlaylist[j], shuffledPlaylist[i]];
+                }
+            }
+
+            function playRandomSong() {
+                const links = isShuffle ? shuffledPlaylist : Array.from(playlist.getElementsByTagName("a"));
+                const randomIndex = Math.floor(Math.random() * links.length);
+                const randomSongUrl = links[randomIndex].getAttribute("href");
+                audioSource.src = randomSongUrl;
+                audio.load();
+                audio.play();
+                nowPlayingText.textContent = "Now Playing: " + links[randomIndex].textContent;
+                currentSongIndex = randomIndex;
+            }
+
+            function playOriginalOrder() {
+                isShuffle = false; // Turn off shuffle mode
+                currentSongIndex = 0; // Reset the current song index
+                const links = Array.from(playlist.getElementsByTagName("a"));
+                const firstSongUrl = links[currentSongIndex].getAttribute("href");
+                audioSource.src = firstSongUrl;
+                audio.load();
+                audio.play();
+                nowPlayingText.textContent = "Now Playing: " + links[currentSongIndex].textContent;
+            }
+
+            function playSong(index) {
+                const links = isShuffle ? shuffledPlaylist : Array.from(playlist.getElementsByTagName("a"));
+                currentSongIndex = index;
+                const songUrl = links[currentSongIndex].getAttribute("href");
+                audioSource.src = songUrl;
+                audio.load();
+                audio.play();
+                nowPlayingText.textContent = "Now Playing: " + links[currentSongIndex].textContent;
+            }
+
+            audio.addEventListener("ended", function () {
+                // When the current song ends, play the next song
+                currentSongIndex = (currentSongIndex + 1) % playlist.getElementsByTagName("a").length;
+                playSong(currentSongIndex);
+            });
+
+            playlist.addEventListener("click", function (event) {
+                event.preventDefault();
+                if (event.target.tagName === "A") {
+                    const index = Array.from(playlist.getElementsByTagName("a")).indexOf(event.target);
+                    playSong(index);
+                }
+            });
+
+            nextButton.addEventListener("click", function () {
+                currentSongIndex = (currentSongIndex + 1) % playlist.getElementsByTagName("a").length;
+                playSong(currentSongIndex);
+            });
+
+            previousButton.addEventListener("click", function () {
+                currentSongIndex = (currentSongIndex - 1 + playlist.getElementsByTagName("a").length) % playlist.getElementsByTagName("a").length;
+                playSong(currentSongIndex);
+            });
+
+            shuffleButton.addEventListener("click", function () {
+                isShuffle = !isShuffle;
+                if (isShuffle) {
+                    shufflePlaylist();
+                } else {
+                    // When shuffle is turned off, play a random song from the playlist
+                    playRandomSong();
+                }
+            });
+
+            playOriginalOrderButton.addEventListener("click", playOriginalOrder);
+        });
+    </script>
+</body>
+
+</html>
+
